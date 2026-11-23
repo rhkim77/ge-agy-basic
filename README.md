@@ -14,7 +14,7 @@
 flowchart LR
     subgraph DATA["1. Enterprise Data Layer (Medium Scale)"]
         direction TB
-        GCS["Cloud Storage Bucket<br/>9 Domain Docs (HTML / XLSX)"]
+        GCS["Cloud Storage Bucket<br/>9 Domain Docs (Semantic HTML)"]
         BQ["BigQuery Dataset (cbl_ge_demo)<br/>4 Tables / 6,460 Rows"]
     end
 

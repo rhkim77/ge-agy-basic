@@ -1,6 +1,6 @@
 # Task 01: 중규모 가상 데이터 생성 및 `GCS` / `BigQuery` 적재
 
-이 단계에서는 Beauty · HDB · Refreshment 소비재 기업(`Cymbal Beauty & Living`)의 3가지 현업 시나리오를 뒷받침하는 **중규모 정형 데이터(`BigQuery` 4개 `Table`, 총 6,460 `Row`)**와 **비정형 규정·SOP 문서(`Cloud Storage` 9종: `HTML` 7종 + `XLSX` 2종)**를 생성하고 클라우드에 적재합니다.
+이 단계에서는 Beauty · HDB · Refreshment 소비재 기업(`Cymbal Beauty & Living`)의 3가지 현업 시나리오를 뒷받침하는 **중규모 정형 데이터(`BigQuery` 4개 `Table`, 총 6,460 `Row`)**와 **비정형 규정·SOP·사례집 문서(`Cloud Storage` 9종 `HTML`)**를 생성하고 클라우드에 적재합니다.
 
 ---
 
