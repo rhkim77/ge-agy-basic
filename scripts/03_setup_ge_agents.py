@@ -212,16 +212,22 @@ def main():
     print("  Existing:", list(existing_by_name.keys()))
 
     print("\n[Step 3/3] Creating 3 Cymbal Beauty & Living Low-Code / Workflow Agents...")
+    import time
     for payload in build_agent_payloads(project_id, location, prefix):
         name = payload["displayName"]
         if name in existing_by_name:
             print(f"  [OK] Already exists: {name} -> {existing_by_name[name]}")
             continue
-        cr = requests.post(agents_url, headers=api_headers(token, project_id), json=payload)
-        if cr.ok:
-            created = cr.json()
-            print(f"  [CREATED] {name} -> {created.get('name')} (state={created.get('state')})")
-        else:
+        for attempt in range(1, 7):
+            cr = requests.post(agents_url, headers=api_headers(token, project_id), json=payload)
+            if cr.ok:
+                created = cr.json()
+                print(f"  [CREATED] {name} -> {created.get('name')} (state={created.get('state')})")
+                break
+            if cr.status_code == 404 and "Data store" in cr.text and attempt < 6:
+                print(f"  [WAIT] Engine DataStore cache propagating (attempt {attempt}/6), retrying in 20s...")
+                time.sleep(20)
+                continue
             raise RuntimeError(f"Create Agent '{name}' failed ({cr.status_code}): {cr.text[:400]}")
 
 
