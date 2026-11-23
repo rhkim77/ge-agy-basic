@@ -1,0 +1,8 @@
+.env
+generated_data/
+agy_workspace/samples/output_*.html
+agy_workspace/samples/output_*.json
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

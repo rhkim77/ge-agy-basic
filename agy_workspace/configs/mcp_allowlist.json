@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "local_servers": [
+      {
+        "id": "local-copy-auditor",
+        "command": "python3",
+        "args": [
+          "samples/batch_copy_validator.py",
+          "--stdio-check"
+        ]
+      }
+    ],
+    "remote_servers": [
+      {
+        "id": "bigquery"
+      }
+    ]
+  }
+}
