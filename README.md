@@ -75,7 +75,7 @@ flowchart LR
 | **Self-serve Billing Account** (신용카드 자동결제 Online 계정) | **30일 체험 License 가능** | **30일 체험 불가** (`Non-trial` 구독 필요) | `Task 00 ~ 03`은 30일 체험으로 진행하고 `Task 04 ~ 05`는 `Pay-as-you-go`(`Prepaid Credits`) 또는 `Standard`/`Plus` 구독 필요 |
 
 > [!IMPORTANT]
-> 모든 `Free-trial` 구독은 한도 초과 종량 과금(`Pay-as-you-go usage above quota`)을 지원하지 않습니다. 좌석 배정 직후 Backend `Entitlement Cache` 동기화에 5~15분 정도 걸릴 수 있으니 `Task 00`에서 **무료 체험 활성화와 좌석 배정을 가장 먼저 완료**해 두세요.
+> 모든 `Free-trial` 구독은 한도 초과 종량 과금(`Pay-as-you-go usage above quota`)을 지원하지 않습니다. `Seat` 할당 직후 Backend `Entitlement Cache` 동기화에 5~15분 정도 걸릴 수 있으니 `Task 00`에서 **무료 체험 활성화와 Seat 할당을 가장 먼저 완료**해 두세요.
 
 ---
 
@@ -83,7 +83,7 @@ flowchart LR
 
 | 단계 | Guide 문서 | 주요 실습 내용 (`Console UI` + `Script` 병행) | 권장 시간 |
 |---|---|---|---|
-| **Setup** | [labs/task00_setup_and_trial.md](labs/task00_setup_and_trial.md) | 필수 API 활성화, `GE` 30일 체험 License 발급·좌석 할당, `Google Identity` 인증 및 `GE App` 생성 | 10분 |
+| **Setup** | [labs/task00_setup_and_trial.md](labs/task00_setup_and_trial.md) | 필수 API 활성화, `GE` 30일 체험 License 발급·`Seat` 할당, `Google Identity` 인증 및 `GE App` 생성 | 10분 |
 | **Task 01** | [labs/task01_synthetic_data.md](labs/task01_synthetic_data.md) | 외부 의존성 없는 Python 기반 중규모 가상 데이터(`BigQuery` 4개 Table 6,460 Row + `GCS` HTML 문서 9종) 생성 및 적재 | 15분 |
 | **Task 02** | [labs/task02_1p_datastores.md](labs/task02_1p_datastores.md) | `GCS`(비정형 3종) 및 `BigQuery`(정형 2종) 1P DataStore 생성, Indexing 상태 확인 및 `GE App` 연결 | 15분 |
 | **Task 03** | [labs/task03_ge_agents_workflows.md](labs/task03_ge_agents_workflows.md) | `GE Agent Designer`에서 3대 업무 Workflow / Low-Code Agent 구성·배포, 시연 Prompt 실행 및 `Canvas` 로컬 File 반출 | 25분 |
@@ -94,7 +94,7 @@ flowchart LR
 
 ## 4. Fast-Track (Script 일괄 구축 Quickstart)
 
-Google Cloud Console UI에서 `Task 00`의 `GE App` 생성과 30일 체험 좌석 할당까지 마쳤다면 아래 명령어로 전체 Demo 환경을 한 번에 구축하고 검증할 수 있습니다.
+Google Cloud Console UI에서 `Task 00`의 `GE App` 생성과 30일 체험 `Seat` 할당까지 마쳤다면 아래 명령어로 전체 Demo 환경을 한 번에 구축하고 검증할 수 있습니다.
 
 ```bash
 git clone https://github.com/rhkim77/ge-agy-basic.git

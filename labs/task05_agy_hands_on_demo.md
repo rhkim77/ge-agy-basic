@@ -24,8 +24,8 @@ Repository 안의 [agy_workspace/](../agy_workspace/) Folder에는 조직 개발
 
 1. **Desktop IDE 사용 시**
    - `Google Antigravity`를 실행한 뒤 초기 로그인 화면에서 `Use Business Account`와 `Continue with Google Cloud`를 차례대로 선택합니다 (`WIF` 연동 조직은 하단 `Use Advanced SSO Config` 선택).
-   - Browser에서 `Task 00` 좌석을 배정받은 계정으로 로그인하고 대상 `Project ID`와 `Location`(`global`)을 지정합니다.
-   - 좌석 할당 후 5~15분 이내라 `Entitlement Cache` 동기화 전이거나 `Self-serve` 온라인 결제 계정을 쓰는 경우에는 로그인 화면에서 `Use Google Cloud project instead`를 선택해 동일 `Project`로 진입할 수 있습니다.
+   - Browser에서 `Task 00` `Seat`를 할당받은 계정으로 로그인하고 대상 `Project ID`와 `Location`(`global`)을 지정합니다.
+   - `Seat` 할당 후 5~15분 이내라 `Entitlement Cache` 동기화 전이거나 `Self-serve` 온라인 결제 계정을 쓰는 경우에는 로그인 화면에서 `Use Google Cloud project instead`를 선택해 동일 `Project`로 진입할 수 있습니다.
    - 좌측 `Open Folder` 또는 `Projects`에서 이 Repository 안의 `agy_workspace` Folder를 엽니다 (`Yes, I trust this folder` 선택).
 
 2. **agy CLI 사용 시**

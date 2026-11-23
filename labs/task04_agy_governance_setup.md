@@ -1,6 +1,6 @@
 # Task 04: Google Antigravity Governance, Custom IAM Role 분리 및 MCP Allowlist 설정
 
-기업에서 `Gemini Enterprise` 좌석을 배포할 때 표준 역할(`roles/discoveryengine.agentspaceUser`)을 그대로 부여하면 모든 사용자에게 `Google Antigravity`(`AI developer tools`) 접근 권한까지 함께 열립니다. 실무 운영 환경에서는 **일반 현업 임직원에게는 GE Web App과 Canvas만 허용**(`Antigravity` 차단)하고 **승인된 개발자·AX 담당자에게만 Antigravity를 개방**하는 직무별 권한 분리와 로컬 실행 통제가 필수입니다.
+기업에서 `Gemini Enterprise` `Seat`를 배포할 때 표준 역할(`roles/discoveryengine.agentspaceUser`)을 그대로 부여하면 모든 사용자에게 `Google Antigravity`(`AI developer tools`) 접근 권한까지 함께 열립니다. 실무 운영 환경에서는 **일반 현업 임직원에게는 GE Web App과 Canvas만 허용**(`Antigravity` 차단)하고 **승인된 개발자·AX 담당자에게만 Antigravity를 개방**하는 직무별 권한 분리와 로컬 실행 통제가 필수입니다.
 
 ![Role-Separated IAM & Antigravity Governance](../assets/diagrams/03_iam_and_antigravity_governance.png)
 
