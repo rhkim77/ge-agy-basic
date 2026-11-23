@@ -1,6 +1,6 @@
 # Task 05: Google Antigravity 접속 및 Domain Rule · Skill · BigQuery 연계 실습
 
-마지막 단계에서는 현업 임직원이 `GE Web App` (`Task 03`)에서 건별로 질의하던 동일한 `Cymbal Beauty & Living` 데이터와 사내 규정을 개발자·AX 담당자가 **Google Antigravity (`Desktop IDE` 또는 `agy CLI`)** 에서 이어받아 **다건 배치 검수기와 임원용 운영 분석 Dashboard** 로 확장하는 협업 시나리오를 실습합니다.
+마지막 단계에서는 현업 임직원이 `GE Web App`(`Task 03`)에서 건별로 질의하던 동일한 `Cymbal Beauty & Living` 데이터와 사내 규정을 개발자·AX 담당자가 **Google Antigravity**(`Desktop IDE` 또는 `agy CLI`)에서 이어받아 **다건 배치 검수기와 임원용 운영 분석 Dashboard**로 확장하는 협업 시나리오를 실습합니다.
 
 ---
 
@@ -23,12 +23,12 @@ Repository 안의 [agy_workspace/](../agy_workspace/) Folder에는 조직 개발
 ### Step 1. Antigravity 로그인 및 agy_workspace 열기
 
 1. **Desktop IDE 사용 시**
-   - `Google Antigravity`를 실행한 뒤 초기 로그인 화면에서 **`Use Business Account`** 와 **`Continue with Google Cloud`** 를 차례대로 선택합니다 (`WIF` 연동 조직은 하단 `Use Advanced SSO Config` 선택).
-   - Browser에서 `Task 00` 좌석을 배정받은 계정으로 로그인하고 대상 **`Project ID`** 와 `Location` (**`global`**)을 지정합니다.
-   - 좌석 할당 후 5~15분 이내라 `Entitlement Cache` 동기화 전이거나 `Self-serve` 온라인 결제 계정을 쓰는 경우에는 로그인 화면에서 **`Use Google Cloud project instead`** 를 선택해 동일 `Project`로 진입할 수 있습니다.
-   - 좌측 **`Open Folder` / `Projects`** 에서 이 Repository 안의 **`agy_workspace`** Folder를 엽니다 (`Yes, I trust this folder` 선택).
+   - `Google Antigravity`를 실행한 뒤 초기 로그인 화면에서 `Use Business Account`와 `Continue with Google Cloud`를 차례대로 선택합니다 (`WIF` 연동 조직은 하단 `Use Advanced SSO Config` 선택).
+   - Browser에서 `Task 00` 좌석을 배정받은 계정으로 로그인하고 대상 `Project ID`와 `Location`(`global`)을 지정합니다.
+   - 좌석 할당 후 5~15분 이내라 `Entitlement Cache` 동기화 전이거나 `Self-serve` 온라인 결제 계정을 쓰는 경우에는 로그인 화면에서 `Use Google Cloud project instead`를 선택해 동일 `Project`로 진입할 수 있습니다.
+   - 좌측 `Open Folder` 또는 `Projects`에서 이 Repository 안의 `agy_workspace` Folder를 엽니다 (`Yes, I trust this folder` 선택).
 
-2. **`agy` CLI 사용 시**
+2. **agy CLI 사용 시**
    ```bash
    cd agy_workspace
    agy
@@ -46,8 +46,8 @@ samples/campaign_copies_draft.csv File의 8개 마케팅 카피를 우리 회사
 REJECT(반려) 또는 CONDITIONAL(조건부승인) 판정을 받은 항목마다 규정을 준수하는 수정 카피 추천 Column까지 추가한 요약 표를 보여줘.
 ```
 
-- `Task 04`에서 `Terminal execution policy = Require review`로 설정했기 때문에 `Agent`가 `python3 samples/batch_copy_validator.py` 실행 승인을 요청합니다. 내용을 확인한 뒤 **`Allow`** 를 클릭합니다.
-- 생성된 `agy_workspace/samples/output_ad_audit_report.html` File을 Browser에서 열어 색상별 판정 Badge (`REJECT` 5건, `CONDITIONAL` 1건, `PASS` 2건)와 추천 대체 문구를 확인합니다.
+- `Task 04`에서 `Terminal execution policy = Require review`로 설정했기 때문에 `Agent`가 `python3 samples/batch_copy_validator.py` 실행 승인을 요청합니다. 내용을 확인한 뒤 `Allow`를 클릭합니다.
+- 생성된 `agy_workspace/samples/output_ad_audit_report.html` File을 Browser에서 열어 색상별 판정 Badge(`REJECT` 5건, `CONDITIONAL` 1건, `PASS` 2건)와 추천 대체 문구를 확인합니다.
 
 ### Step 3. 실습 시나리오 4-B: BigQuery 재고 리스크 & P1 집중 Lot 임원 브리핑 생성
 
