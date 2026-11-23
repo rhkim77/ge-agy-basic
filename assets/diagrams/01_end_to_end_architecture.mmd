@@ -1,0 +1,41 @@
+flowchart LR
+    classDef gcpBlue fill:#E8F0FE,stroke:#1967D2,stroke-width:2px,color:#202124
+    classDef gcpGreen fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px,color:#202124
+    classDef gcpYellow fill:#FEF7E0,stroke:#B06000,stroke-width:2px,color:#202124
+    classDef gcpRed fill:#FCE8E6,stroke:#D93025,stroke-width:2px,color:#202124
+
+    subgraph SG_Data ["1. Enterprise Data Layer (US)"]
+        BQ["BigQuery (cbl_ge_demo)<br/>4 Tables / 6,460 Rows"]:::gcpGreen
+        GCS["Cloud Storage Bucket<br/>9 Domain HTML Docs"]:::gcpGreen
+    end
+
+    subgraph SG_DS ["2. Discovery Engine 1P DataStores (global)"]
+        DS_BQ["Structured 1P DataStores (2x)<br/>cbl-ds-bq-sales-inventory<br/>cbl-ds-bq-voc-claims"]:::gcpGreen
+        DS_GCS["Unstructured 1P DataStores (3x)<br/>cbl-ds-ad-compliance<br/>sales-policy / voc-sop"]:::gcpGreen
+    end
+
+    subgraph SG_AI ["3. Governed AI Surfaces"]
+        GE_APP["Gemini Enterprise Web App<br/>Default Assistant / Canvas<br/>3 Agent Designer Workflows"]:::gcpYellow
+        IAM_GOV["Cloud IAM & AI Dev Tools Policy<br/>geStandardChatUser vs agentspaceUser<br/>Sandbox ON / MCP Allowlist"]:::gcpRed
+        AGY_IDE["Google Antigravity (IDE / agy CLI)<br/>agy_workspace (.agent/rules & skills)<br/>BigQuery MCP"]:::gcpBlue
+    end
+
+    subgraph SG_Users ["4. Enterprise Personas"]
+        BIZ_USER["Business Users<br/>Marketing / MD / CS<br/>30-Day Free-Trial Seat"]:::gcpYellow
+        DEV_USER["Approved Developers & AX<br/>Use Business Account<br/>10x Weekly Credit Cap"]:::gcpBlue
+    end
+
+    BQ ==>|"NO_CONTENT Schema"| DS_BQ
+    GCS ==>|"Layout Chunking (500t)"| DS_GCS
+    DS_BQ ==>|"Scoped Grounding"| GE_APP
+    DS_GCS ==>|"Citation RAG"| GE_APP
+    BQ -.->|"Read-Only BigQuery MCP"| AGY_IDE
+    IAM_GOV -.->|"Block businessaicode.*"| GE_APP
+    IAM_GOV -.->|"Require Review + Allowlist"| AGY_IDE
+    BIZ_USER ==>|"Google Identity"| GE_APP
+    DEV_USER ==>|"OAuth Sign-In"| AGY_IDE
+
+    style SG_Data fill:#F8F9FA,stroke:#1E8E3E,stroke-width:2px
+    style SG_DS fill:#F8F9FA,stroke:#5F6368,stroke-width:1.5px
+    style SG_AI fill:#F8F9FA,stroke:#1967D2,stroke-width:2px
+    style SG_Users fill:#FFFFFF,stroke:#9E9E9E,stroke-dasharray:5 5,stroke-width:1.5px

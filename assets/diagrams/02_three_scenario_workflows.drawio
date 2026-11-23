@@ -1,0 +1,40 @@
+<mxfile host="drawio-internal.corp.goog" version="21.0.0" type="device">
+  <diagram id="workflows-3" name="2. Three-Scenario Workflows">
+    <mxGraphModel dx="1600" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="s1_lane" value="&lt;b&gt;Scenario 1: Cosmetic Ad-Copy Compliance Pre-Review Workflow (SequentialAgentNode)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="40" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_1" value="&lt;b&gt;1. Draft Copy Input&lt;/b&gt;&lt;br/&gt;Brand · Channel · Product Copy Draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0288D1;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="30" y="65" width="260" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_2" value="&lt;b&gt;2. Step 1: step1_audit (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;DataStore: cbl-ds-ad-compliance&lt;br/&gt;Cosmetic Act Art. 13 · Banned Terms · REV-2026 Ledger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="380" y="65" width="350" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_3" value="&lt;b&gt;3. Step 2: step2_rewrite (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;2 Compliant Copy Alternatives&lt;br/&gt;4 Mandatory Clinical Footnote Checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="820" y="65" width="320" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_4" value="&lt;b&gt;RA Pre-Review Request&lt;/b&gt;&lt;br/&gt;Pass / Conditional / Reject Report" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="1220" y="65" width="220" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_1" target="s1_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s1_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_2" target="s1_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s1_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_3" target="s1_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="s2_lane" value="&lt;b&gt;Scenario 2: Brand &amp;amp; Channel Sales / Inventory Risk Analysis Agent (Low-Code Cross-Source RAG)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="50" y="300" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_1" value="&lt;b&gt;1. MD / Sales Planner Query&lt;/b&gt;&lt;br/&gt;SKU-LUMI-001 Duty-Free ROI Drop &amp;amp;&lt;br/&gt;SKU-VERD-004 H&amp;amp;B Stock-Out Risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="30" y="65" width="280" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_2" value="&lt;b&gt;2. Root Node: root_sales (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;• BigQuery: cbl-ds-bq-sales-inventory (3,600 rows)&lt;br/&gt;• GCS: cbl-ds-sales-policy (Discount Cap &amp;amp; &lt;50% Safety Stock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="430" y="65" width="460" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_3" value="&lt;b&gt;3. Actionable SCM &amp;amp; Exec Brief&lt;/b&gt;&lt;br/&gt;KPI Comparison Table + 48h Emergency Replenishment Plan" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="1030" y="65" width="410" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s2_lane" source="s2_1" target="s2_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s2_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s2_lane" source="s2_2" target="s2_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="s3_lane" value="&lt;b&gt;Scenario 3: Customer VOC &amp;amp; Quality Claim Escalation Workflow (SequentialAgentNode + Canvas)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#FCE4EC;strokeColor=#C2185B;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#880E4F;" vertex="1" parent="1">
+          <mxGeometry x="50" y="560" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3_1" value="&lt;b&gt;1. CS / QA Claim Input&lt;/b&gt;&lt;br/&gt;SKU-ROOT-001 · LOT-202610-D01&lt;br/&gt;Pump Head Leakage Reported" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2185B;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="30" y="65" width="260" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_2" value="&lt;b&gt;2. Step 1: step1_triage (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;bq-voc-claims Lookup (18 Same-Lot Hits) +&lt;br/&gt;QA-SOP-2026-03 (&gt;=10 Same-Lot Hits -&gt; P1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="380" y="65" width="360" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_3" value="&lt;b&gt;3. Step 2: step2_draft (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;Customer Reply (Replacement / Medical Cap) +&lt;br/&gt;QA Committee Warehouse Hold Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="820" y="65" width="330" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_4" value="&lt;b&gt;Canvas Local Download&lt;/b&gt;&lt;br/&gt;Non-GWS .docx / .pdf Export" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="1230" y="65" width="210" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_1" target="s3_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s3_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_2" target="s3_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s3_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_3" target="s3_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

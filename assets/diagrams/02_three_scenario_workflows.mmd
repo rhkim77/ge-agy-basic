@@ -1,0 +1,30 @@
+flowchart LR
+    classDef gcpBlue fill:#E8F0FE,stroke:#1967D2,stroke-width:2px,color:#202124
+    classDef gcpGreen fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px,color:#202124
+    classDef gcpYellow fill:#FEF7E0,stroke:#B06000,stroke-width:2px,color:#202124
+    classDef gcpRed fill:#FCE8E6,stroke:#D93025,stroke-width:2px,color:#202124
+
+    subgraph SG_S1 ["Scenario 1: Cosmetic Ad-Copy Pre-Review (Sequential Workflow)"]
+        S1_IN["1. Draft Copy Input<br/>Brand / Channel / Copy"]:::gcpBlue
+        S1_N1["2. Step 1: step1_audit<br/>cbl-ds-ad-compliance<br/>Cosmetic Act Art. 13 & REV-2026"]:::gcpYellow
+        S1_N2["3. Step 2: step2_rewrite<br/>2 Compliant Alternatives<br/>4 Clinical Footnote Checks"]:::gcpGreen
+        S1_IN ==>|"Sequential Step 1"| S1_N1 ==>|"Sequential Step 2"| S1_N2
+    end
+
+    subgraph SG_S2 ["Scenario 2: Brand & Channel Sales / Stock Briefing (Low-Code Agent)"]
+        S2_IN["1. MD / Planner Query<br/>SKU-LUMI-001 / SKU-VERD-004"]:::gcpBlue
+        S2_N1["2. Root Node: root_sales<br/>bq-sales-inventory + sales-policy<br/>ROI & <50% Safety Stock Rule"]:::gcpGreen
+        S2_OUT["3. Actionable SCM Brief<br/>KPI Table & 48h Replenishment"]:::gcpYellow
+        S2_IN ==>|"Cross-Source RAG"| S2_N1 ==>|"Actionable Brief"| S2_OUT
+    end
+
+    subgraph SG_S3 ["Scenario 3: Customer VOC & Quality Claim Triage (Sequential + Canvas)"]
+        S3_IN["1. CS / QA Claim Input<br/>SKU-ROOT-001 / LOT-202610-D01"]:::gcpBlue
+        S3_N1["2. Step 1: step1_triage<br/>bq-voc-claims (18 Hits) +<br/>QA-SOP-2026-03 (>=10 Hits P1)"]:::gcpGreen
+        S3_N2["3. Step 2: step2_draft & Canvas<br/>Customer Reply & Hold Report<br/>Local .docx / .pdf Export"]:::gcpRed
+        S3_IN ==>|"Sequential Step 1"| S3_N1 ==>|"Sequential Step 2"| S3_N2
+    end
+
+    style SG_S1 fill:#F8F9FA,stroke:#1967D2,stroke-width:2px
+    style SG_S2 fill:#F8F9FA,stroke:#1E8E3E,stroke-width:2px
+    style SG_S3 fill:#F8F9FA,stroke:#D93025,stroke-width:2px

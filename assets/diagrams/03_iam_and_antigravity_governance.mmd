@@ -1,0 +1,30 @@
+flowchart TD
+    classDef gcpBlue fill:#E8F0FE,stroke:#1967D2,stroke-width:2px,color:#202124
+    classDef gcpGreen fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2px,color:#202124
+    classDef gcpYellow fill:#FEF7E0,stroke:#B06000,stroke-width:2px,color:#202124
+    classDef gcpRed fill:#FCE8E6,stroke:#D93025,stroke-width:2px,color:#202124
+
+    subgraph SG_Top ["1. Identity & Pooled Seat Entitlement (locations/global)"]
+        ID_SEAT["Google Identity / WIF & 30-Day Trial Seat<br/>UserStore Seat Assignment / Single-User Multiplier = 10"]:::gcpYellow
+    end
+
+    subgraph SG_IAM ["2. Role-Separated Cloud IAM Boundary"]
+        ROLE_BIZ["Custom IAM Role: geStandardChatUser<br/>129 Perms / Retains 7 Canvas Perms<br/>Removes 5 businessaicode.locations.* Perms"]:::gcpGreen
+        ROLE_DEV["Predefined Role: roles/discoveryengine.agentspaceUser<br/>135 Perms / Includes businessaicode.*<br/>Required for Developers & Admins (AND Rule)"]:::gcpBlue
+    end
+
+    subgraph SG_Runtime ["3. Governed Runtime Surfaces"]
+        SURF_GE["General Employees Surface<br/>GE Web App / Agent Designer / Canvas<br/>Antigravity Sign-In Blocked (HTTP 403)"]:::gcpGreen
+        SURF_AGY["Approved Developers Surface (Antigravity)<br/>Outside File = Deny / Terminal = Review<br/>Sandbox = ON / Metadata Logging = ON"]:::gcpBlue
+        MCP_POL["Allowed MCP Server JSON<br/>remote: bigquery / local: local-copy-auditor"]:::gcpRed
+    end
+
+    ID_SEAT ==>|"General Employees"| ROLE_BIZ
+    ID_SEAT ==>|"Approved Developers"| ROLE_DEV
+    ROLE_BIZ ==>|"Web & Canvas Allowed"| SURF_GE
+    ROLE_DEV ==>|"IDE & CLI Allowed"| SURF_AGY
+    MCP_POL -.->|"Settings > AI developer tools"| SURF_AGY
+
+    style SG_Top fill:#F8F9FA,stroke:#B06000,stroke-width:1.5px
+    style SG_IAM fill:#F8F9FA,stroke:#1E8E3E,stroke-width:2px
+    style SG_Runtime fill:#F8F9FA,stroke:#1967D2,stroke-width:2px

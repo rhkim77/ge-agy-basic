@@ -1,0 +1,29 @@
+<mxfile host="drawio-internal.corp.goog" version="21.0.0" type="device">
+  <diagram id="iam-agy" name="3. IAM &amp; Antigravity Governance">
+    <mxGraphModel dx="1600" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="860">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="top_id" value="&lt;b&gt;Identity &amp;amp; Pooled Seat Entitlement (locations/global)&lt;/b&gt;&lt;br/&gt;Google Identity / Workforce Identity Federation · 30-Day Free-Trial or Standard Subscription · Multiplier = 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="880" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_biz" value="&lt;b&gt;Custom IAM Role: geStandardChatUser&lt;/b&gt;&lt;hr/&gt;• Derived from roles/discoveryengine.agentspaceUser&lt;br/&gt;• 129 Permissions Included&lt;br/&gt;• Retains 7 discoveryengine.immersiveArtifacts.* (Canvas)&lt;br/&gt;• &lt;b&gt;Removes 5 businessaicode.locations.* Permissions&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="140" y="190" width="480" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_dev" value="&lt;b&gt;Predefined Role: roles/discoveryengine.agentspaceUser&lt;/b&gt;&lt;hr/&gt;• Assigned to Approved Developers &amp;amp; AX Engineers&lt;br/&gt;• 135 Permissions Included&lt;br/&gt;• Grants full GE Web App + Canvas + Google Antigravity&lt;br/&gt;• Platform Admins also require this role (AND rule)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="860" y="190" width="480" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="dest_ge" value="&lt;b&gt;General Employees Surface&lt;/b&gt;&lt;hr/&gt;• Gemini Enterprise Web App Search &amp;amp; Chat&lt;br/&gt;• Shared Agent Designer Workflows&lt;br/&gt;• Canvas Local File Download (.docx / .pdf / .pptx / .html)&lt;br/&gt;• &lt;font color=&quot;#C62828&quot;&gt;&lt;b&gt;Antigravity IDE / CLI Blocked (HTTP 403)&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="140" y="420" width="480" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="dest_agy" value="&lt;b&gt;Approved Developers Surface (Google Antigravity)&lt;/b&gt;&lt;hr/&gt;• Outside Workspace File Access = &lt;b&gt;Deny&lt;/b&gt;&lt;br/&gt;• Terminal Execution Policy = &lt;b&gt;Require review&lt;/b&gt;&lt;br/&gt;• Terminal Sandbox = &lt;b&gt;Enabled&lt;/b&gt; · Metadata Logging = &lt;b&gt;Enabled&lt;/b&gt;&lt;br/&gt;• Allowed MCP JSON: &lt;b&gt;bigquery&lt;/b&gt; + &lt;b&gt;local-copy-auditor&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0288D1;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="860" y="420" width="480" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="ie1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="1" source="top_id" target="r_biz"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="1" source="top_id" target="r_dev"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2.5;strokeColor=#2E7D32;" edge="1" parent="1" source="r_biz" target="dest_ge"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2.5;strokeColor=#0288D1;" edge="1" parent="1" source="r_dev" target="dest_agy"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

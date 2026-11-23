@@ -1,0 +1,154 @@
+<mxfile host="drawio-internal.corp.goog" version="21.0.0" type="device">
+  <diagram id="e2e-arch" name="1. End-to-End Architecture">
+    <mxGraphModel dx="1600" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="960">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b style=&quot;font-size:18px;&quot;&gt;Cymbal Beauty &amp;amp; Living: Gemini Enterprise 1P DataStore &amp;amp; Google Antigravity Architecture&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:12px;&quot;&gt;Single GCP Project Boundary · Non-GWS Authentication · Role-Separated Citizen &amp;amp; Developer Surfaces&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#DADCE0;strokeWidth=1.5;align=left;spacingLeft=20;fontFamily=Helvetica;fontColor=#202124;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1600" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_data" value="&lt;b&gt;1. Enterprise Data Sources (US Multi-Region)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;arcSize=6;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;strokeDashArray=5,5;fontColor=#1B5E20;fontFamily=Helvetica;startSize=32;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="330" height="580" as="geometry"/>
+        </mxCell>
+        <mxCell id="bq_db" value="&lt;b&gt;BigQuery Dataset (cbl_ge_demo)&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;• products_master (120 rows)&lt;br/&gt;• channel_sales_inventory (3,600 rows)&lt;br/&gt;• promotions_calendar (240 rows)&lt;br/&gt;• voc_quality_claims (2,500 rows)&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=14;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;align=left;spacingLeft=12;" vertex="1" parent="lane_data">
+          <mxGeometry x="30" y="65" width="270" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="gcs_bkt" value="&lt;b&gt;Cloud Storage Bucket&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;• scenario1_ad_compliance/ (3 HTML)&lt;br/&gt;• scenario2_sales_promo/ (3 HTML)&lt;br/&gt;• scenario3_voc_qa/ (3 HTML)&lt;br/&gt;• bq_staging/ (4 CSV)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=top;spacingTop=10;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_data">
+          <mxGeometry x="30" y="310" width="270" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_ds" value="&lt;b&gt;2. Discovery Engine 1P DataStores (locations/global)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;arcSize=6;fillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=2;strokeDashArray=5,5;fontColor=#004D40;fontFamily=Helvetica;startSize=32;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="120" width="360" height="580" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds_bq1" value="&lt;b&gt;cbl-ds-bq-sales-inventory&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:11px;&quot;&gt;BigQuery Structured · NO_CONTENT&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ds">
+          <mxGeometry x="30" y="55" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds_bq2" value="&lt;b&gt;cbl-ds-bq-voc-claims&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:11px;&quot;&gt;BigQuery Structured · NO_CONTENT&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ds">
+          <mxGeometry x="30" y="155" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds_gcs1" value="&lt;b&gt;cbl-ds-ad-compliance&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:11px;&quot;&gt;GCS Unstructured · Layout Chunking (500t)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ds">
+          <mxGeometry x="30" y="280" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds_gcs2" value="&lt;b&gt;cbl-ds-sales-policy&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:11px;&quot;&gt;GCS Unstructured · Promo &amp;amp; Safety Stock&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ds">
+          <mxGeometry x="30" y="380" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds_gcs3" value="&lt;b&gt;cbl-ds-voc-sop&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#5F6368&quot; style=&quot;font-size:11px;&quot;&gt;GCS Unstructured · QA P1 SOP &amp;amp; Comp Matrix&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ds">
+          <mxGeometry x="30" y="480" width="300" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_ai" value="&lt;b&gt;3. Gemini Enterprise &amp;amp; Google Antigravity Runtime&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;arcSize=6;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;strokeDashArray=5,5;fontColor=#01579B;fontFamily=Helvetica;startSize=32;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="850" y="120" width="410" height="580" as="geometry"/>
+        </mxCell>
+        <mxCell id="ge_box" value="&lt;b&gt;Gemini Enterprise Web App (Engine)&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;• Default Assistant (All 5 DataStores Blended)&lt;br/&gt;• Workflow 1: Ad-Copy Compliance Pre-Review (Sequential)&lt;br/&gt;• Agent 2: Sales &amp;amp; Inventory Risk Analysis (Low-Code)&lt;br/&gt;• Workflow 3: VOC &amp;amp; Quality Claim Escalation (Sequential)&lt;br/&gt;• Canvas Local Export (.docx / .pdf / .pptx / .html)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#FB8C00;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=top;spacingTop=10;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ai">
+          <mxGeometry x="30" y="55" width="350" height="195" as="geometry"/>
+        </mxCell>
+        <mxCell id="iam_box" value="&lt;b&gt;IAM &amp;amp; AI Developer Tools Governance&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;• Custom Role: geStandardChatUser (129 perms, 0 agy)&lt;br/&gt;• Developer Role: roles/discoveryengine.agentspaceUser&lt;br/&gt;• Outside File = Deny · Terminal = Require Review&lt;br/&gt;• Sandbox = Enabled · MCP Allowlist JSON&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=top;spacingTop=10;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ai">
+          <mxGeometry x="30" y="275" width="350" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="agy_box" value="&lt;b&gt;Google Antigravity (Desktop IDE / agy CLI)&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;• agy_workspace/.agent/rules/ (Cosmetic Act + Read-Only)&lt;br/&gt;• .agent/skills/ (ad-compliance-auditor, bq-ops-analyzer)&lt;br/&gt;• Allowed MCP: bigquery + local-copy-auditor&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#FFFFFF;strokeColor=#0288D1;strokeWidth=2;align=left;spacingLeft=12;verticalAlign=top;spacingTop=10;fontColor=#202124;fontFamily=Helvetica;" vertex="1" parent="lane_ai">
+          <mxGeometry x="30" y="430" width="350" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_users" value="&lt;b&gt;4. Enterprise Personas&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;arcSize=6;fillColor=#EDE7F6;strokeColor=#5E35B1;strokeWidth=2;strokeDashArray=5,5;fontColor=#311B92;fontFamily=Helvetica;startSize=32;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="120" width="320" height="580" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_biz" value="&lt;b&gt;Business Users&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;Marketing · Brand MD · CS / QA&lt;br/&gt;&lt;br/&gt;• Google Identity Sign-In&lt;br/&gt;• 30-Day Free-Trial Seat&lt;br/&gt;• Antigravity Blocked by IAM&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5E35B1;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;align=left;spacingLeft=14;" vertex="1" parent="lane_users">
+          <mxGeometry x="30" y="70" width="260" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_dev" value="&lt;b&gt;Approved Developers &amp;amp; AX Team&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px;&quot;&gt;Platform Eng · Data / AI Builders&lt;br/&gt;&lt;br/&gt;• Use Business Account Sign-In&lt;br/&gt;• Weekly Pooled Credit (10x Cap)&lt;br/&gt;• Batch Copy &amp;amp; Ops Dashboard Dev&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5E35B1;strokeWidth=2;fontColor=#202124;fontFamily=Helvetica;align=left;spacingLeft=14;" vertex="1" parent="lane_users">
+          <mxGeometry x="30" y="390" width="260" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="note_trial" value="&lt;b&gt;30-Day Free-Trial Eligibility Note:&lt;/b&gt; Gemini Enterprise Web App &amp;amp; 1P DataStores support 30-day Free-Trial across all billing accounts. Google Antigravity (AI developer tools) is included in 30-day Free-Trial on &lt;b&gt;Invoiced Billing Accounts&lt;/b&gt;; Self-serve online accounts require an active non-trial subscription (Standard, Plus, or Pay-as-you-go with Prepaid Credits)." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF9C4;strokeColor=#FBC02D;strokeWidth=1.5;fontColor=#5F4B00;fontFamily=Helvetica;align=left;spacingLeft=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="730" width="1600" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" parent="1" source="bq_db" target="ds_bq1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" parent="1" source="bq_db" target="ds_bq2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" parent="1" source="gcs_bkt" target="ds_gcs1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" parent="1" source="gcs_bkt" target="ds_gcs2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" parent="1" source="gcs_bkt" target="ds_gcs3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#00897B;strokeWidth=2;" edge="1" parent="1" source="ds_bq1" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#00897B;strokeWidth=2;" edge="1" parent="1" source="ds_bq2" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#00897B;strokeWidth=2;" edge="1" parent="1" source="ds_gcs1" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#00897B;strokeWidth=2;" edge="1" parent="1" source="ds_gcs2" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#00897B;strokeWidth=2;" edge="1" parent="1" source="ds_gcs3" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="BigQuery MCP (Read-Only)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#0288D1;strokeWidth=2;strokeDashArray=4,4;fontColor=#01579B;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="bq_db" target="agy_box">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="280"/>
+              <mxPoint x="20" y="715"/>
+              <mxPoint x="1055" y="715"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#E65100;strokeWidth=2;strokeDashArray=3,3;" edge="1" parent="1" source="iam_box" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#E65100;strokeWidth=2;strokeDashArray=3,3;" edge="1" parent="1" source="iam_box" target="agy_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#5E35B1;strokeWidth=2.5;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="u_biz" target="ge_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" value="OAuth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#5E35B1;strokeWidth=2.5;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="u_dev" target="agy_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="workflows-3" name="2. Three-Scenario Workflows">
+    <mxGraphModel dx="1600" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="s1_lane" value="&lt;b&gt;Scenario 1: Cosmetic Ad-Copy Compliance Pre-Review Workflow (SequentialAgentNode)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="50" y="40" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1_1" value="&lt;b&gt;1. Draft Copy Input&lt;/b&gt;&lt;br/&gt;Brand · Channel · Product Copy Draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0288D1;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="30" y="65" width="260" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_2" value="&lt;b&gt;2. Step 1: step1_audit (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;DataStore: cbl-ds-ad-compliance&lt;br/&gt;Cosmetic Act Art. 13 · Banned Terms · REV-2026 Ledger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="380" y="65" width="350" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_3" value="&lt;b&gt;3. Step 2: step2_rewrite (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;2 Compliant Copy Alternatives&lt;br/&gt;4 Mandatory Clinical Footnote Checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="820" y="65" width="320" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_4" value="&lt;b&gt;RA Pre-Review Request&lt;/b&gt;&lt;br/&gt;Pass / Conditional / Reject Report" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s1_lane"><mxGeometry x="1220" y="65" width="220" height="100" as="geometry"/></mxCell>
+        <mxCell id="s1_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_1" target="s1_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s1_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_2" target="s1_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s1_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s1_lane" source="s1_3" target="s1_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="s2_lane" value="&lt;b&gt;Scenario 2: Brand &amp;amp; Channel Sales / Inventory Risk Analysis Agent (Low-Code Cross-Source RAG)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="50" y="300" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2_1" value="&lt;b&gt;1. MD / Sales Planner Query&lt;/b&gt;&lt;br/&gt;SKU-LUMI-001 Duty-Free ROI Drop &amp;amp;&lt;br/&gt;SKU-VERD-004 H&amp;amp;B Stock-Out Risk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="30" y="65" width="280" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_2" value="&lt;b&gt;2. Root Node: root_sales (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;• BigQuery: cbl-ds-bq-sales-inventory (3,600 rows)&lt;br/&gt;• GCS: cbl-ds-sales-policy (Discount Cap &amp;amp; &lt;50% Safety Stock)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="430" y="65" width="460" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_3" value="&lt;b&gt;3. Actionable SCM &amp;amp; Exec Brief&lt;/b&gt;&lt;br/&gt;KPI Comparison Table + 48h Emergency Replenishment Plan" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s2_lane"><mxGeometry x="1030" y="65" width="410" height="100" as="geometry"/></mxCell>
+        <mxCell id="s2_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s2_lane" source="s2_1" target="s2_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s2_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s2_lane" source="s2_2" target="s2_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="s3_lane" value="&lt;b&gt;Scenario 3: Customer VOC &amp;amp; Quality Claim Escalation Workflow (SequentialAgentNode + Canvas)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;rounded=1;fillColor=#FCE4EC;strokeColor=#C2185B;strokeWidth=2;startSize=32;collapsible=0;fontFamily=Helvetica;fontColor=#880E4F;" vertex="1" parent="1">
+          <mxGeometry x="50" y="560" width="1480" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3_1" value="&lt;b&gt;1. CS / QA Claim Input&lt;/b&gt;&lt;br/&gt;SKU-ROOT-001 · LOT-202610-D01&lt;br/&gt;Pump Head Leakage Reported" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C2185B;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="30" y="65" width="260" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_2" value="&lt;b&gt;2. Step 1: step1_triage (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;bq-voc-claims Lookup (18 Same-Lot Hits) +&lt;br/&gt;QA-SOP-2026-03 (&gt;=10 Same-Lot Hits -&gt; P1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="380" y="65" width="360" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_3" value="&lt;b&gt;3. Step 2: step2_draft (LlmAgentNode)&lt;/b&gt;&lt;br/&gt;Customer Reply (Replacement / Medical Cap) +&lt;br/&gt;QA Committee Warehouse Hold Report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="820" y="65" width="330" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_4" value="&lt;b&gt;Canvas Local Download&lt;/b&gt;&lt;br/&gt;Non-GWS .docx / .pdf Export" style="shape=document;whiteSpace=wrap;html=1;size=0.15;fillColor=#FFFFFF;strokeColor=#546E7A;strokeWidth=2;" vertex="1" parent="s3_lane"><mxGeometry x="1230" y="65" width="210" height="100" as="geometry"/></mxCell>
+        <mxCell id="s3_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_1" target="s3_2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s3_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_2" target="s3_3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s3_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="s3_lane" source="s3_3" target="s3_4"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="iam-agy" name="3. IAM &amp; Antigravity Governance">
+    <mxGraphModel dx="1600" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="860">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="top_id" value="&lt;b&gt;Identity &amp;amp; Pooled Seat Entitlement (locations/global)&lt;/b&gt;&lt;br/&gt;Google Identity / Workforce Identity Federation · 30-Day Free-Trial or Standard Subscription · Multiplier = 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FB8C00;strokeWidth=2;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="880" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_biz" value="&lt;b&gt;Custom IAM Role: geStandardChatUser&lt;/b&gt;&lt;hr/&gt;• Derived from roles/discoveryengine.agentspaceUser&lt;br/&gt;• 129 Permissions Included&lt;br/&gt;• Retains 7 discoveryengine.immersiveArtifacts.* (Canvas)&lt;br/&gt;• &lt;b&gt;Removes 5 businessaicode.locations.* Permissions&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="140" y="190" width="480" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="r_dev" value="&lt;b&gt;Predefined Role: roles/discoveryengine.agentspaceUser&lt;/b&gt;&lt;hr/&gt;• Assigned to Approved Developers &amp;amp; AX Engineers&lt;br/&gt;• 135 Permissions Included&lt;br/&gt;• Grants full GE Web App + Canvas + Google Antigravity&lt;br/&gt;• Platform Admins also require this role (AND rule)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#0288D1;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="860" y="190" width="480" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="dest_ge" value="&lt;b&gt;General Employees Surface&lt;/b&gt;&lt;hr/&gt;• Gemini Enterprise Web App Search &amp;amp; Chat&lt;br/&gt;• Shared Agent Designer Workflows&lt;br/&gt;• Canvas Local File Download (.docx / .pdf / .pptx / .html)&lt;br/&gt;• &lt;font color=&quot;#C62828&quot;&gt;&lt;b&gt;Antigravity IDE / CLI Blocked (HTTP 403)&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="140" y="420" width="480" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="dest_agy" value="&lt;b&gt;Approved Developers Surface (Google Antigravity)&lt;/b&gt;&lt;hr/&gt;• Outside Workspace File Access = &lt;b&gt;Deny&lt;/b&gt;&lt;br/&gt;• Terminal Execution Policy = &lt;b&gt;Require review&lt;/b&gt;&lt;br/&gt;• Terminal Sandbox = &lt;b&gt;Enabled&lt;/b&gt; · Metadata Logging = &lt;b&gt;Enabled&lt;/b&gt;&lt;br/&gt;• Allowed MCP JSON: &lt;b&gt;bigquery&lt;/b&gt; + &lt;b&gt;local-copy-auditor&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0288D1;strokeWidth=2;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="860" y="420" width="480" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="ie1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="1" source="top_id" target="r_biz"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#546E7A;" edge="1" parent="1" source="top_id" target="r_dev"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2.5;strokeColor=#2E7D32;" edge="1" parent="1" source="r_biz" target="dest_ge"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ie4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2.5;strokeColor=#0288D1;" edge="1" parent="1" source="r_dev" target="dest_agy"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
